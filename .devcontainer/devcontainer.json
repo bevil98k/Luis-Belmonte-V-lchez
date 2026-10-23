@@ -14,5 +14,6 @@
         "vscjava.vscode-java-pack"
       ]
     }
-  }
+  },
+  "postCreateCommand": "npm install"
 }

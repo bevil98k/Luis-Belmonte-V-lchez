@@ -59,7 +59,7 @@ Cambiar de 0, a 1, supongo que de esa manera esta instalado el programa
 | Extensión | ¿Para qué sirve? | ¿Qué cambió al instalarla? | ¿La mantengo? ¿Por qué? |
 |-----------|------------------|----------------------------|-------------------------|
 | Extension Pack for Java |Sirve para programar, compilar y ejecutar aplicaciones Java desde VS Code. Incluye herramientas para depurar, gestionar proyectos y trabajar con Maven|Se activó el soporte para Java, aparecieron opciones para ejecutar y depurar archivos .java, y se pudieron detectar errores en el código|Sí, porque necesito Java para trabajar con el archivo Factura.java|
-| Code Spell Checker      |Sirve para detectar errores ortográficos en los comentarios, textos y nombres escritos en el código|Empezó a señalar palabras posiblemente mal escritas y ofreció sugerencias de corrección|Sí, porque ayuda a escribir mejor los comentarios y la documentación del proyecto.|
+| Code Spell Checker      |Sirve para detectar errores ortográficos en los comentarios, textos y nombres escritos en el código|Empezó a señalar palabras posiblemente mal escritas y ofreció sugerencias de corrección|No, porque el corrector marca como errores palabras correctas en español: en un equipo de habla hispana molesta más de lo que ayuda|
 
 ¿Qué diferencia hay entre instalar una extensión **solo desde el panel** y añadirla **también a `devcontainer.json`**?
 
@@ -69,21 +69,37 @@ Cambiar de 0, a 1, supongo que de esa manera esta instalado el programa
 
 ## 3. Personalización y automatización (CE 2.c)
 
-- **Tema visual elegido** (paso 10) y por qué:
+- **Default High Contrast** (paso 10) y por qué: Porque esta bien, y no es necesario instalarse una extension
 - **Ajuste del proyecto** (paso 10). ¿Qué archivo se ha creado y qué contiene?
+setting.json , un archivo con el tema visual
 
 ```
 pega aquí el contenido de .vscode/settings.json
 ```
+{
+    "workbench.colorTheme": "Default High Contrast",
+    "editor.formatOnSave": true
+}
 
 - **Atajo de teclado** (paso 11). ¿Qué acción, qué combinación y para qué te sirve?
-- **Snippet** (paso 12). ¿Qué escribes y qué aparece?
+Codespaces: Rebuild Container; sirve para reconstruir el contenedor de desarrollo usando de nuevo la configuración de devcontainer.json. 
+- **Snippet** (paso 12). ¿Qué escribes y qué aparece? cabecera y aparece: 
+/*
+ * Archivo: Prueba.java
+ * Autor/a: Luis Belmonte Vílchez
+ * Fecha:   23/10/2026
+ * Módulo:  Entornos de Desarrollo - DAW
+ */
 - **Automatización al crear el entorno** (paso 14). ¿Qué hace `postCreateCommand` y qué archivos/carpetas han aparecido después de reconstruir?
 - **Tareas** (paso 13). ¿Cuántas tareas hay en `tasks.json` y qué hace cada una?
-
+Java: compilar, empaquetar y 
+TypeScript: compilar y 
+Build completo (Java + TypeScript)
 ¿Qué parte de toda esta configuración es **personal** (solo para ti) y qué parte es **del proyecto** (la recibe cualquiera que abra el repositorio)?
 
-> 
+> La parte personal es el tema visual que he elegido, el atajo de teclado y mis preferencias de uso del editor. Estas configuraciones solo me afectan a mí, salvo que las guarde dentro del repositorio.
+
+La parte del proyecto es la configuración de devcontainer.json, las extensiones añadidas, etc.
 
 ---
 
