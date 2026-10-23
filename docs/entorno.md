@@ -194,4 +194,4 @@ Anota cualquier problema que hayas tenido y cómo lo resolviste (también si usa
 
 ¿Qué ventaja tiene describir el entorno «como código» frente a instalar cada programa a mano en tu ordenador? Piensa en un equipo con Mac y Windows.
 
-> Describir el entorno como código permite que todo el equipo use las mismas herramientas y versiones sin instalarlas una por una. Así, una persona con Mac y otra con Windows pueden abrir el proyecto y obtener un entorno equivalente, reduciendo errores de configuración y facilitando reproducirlo si hay que reinstalarlo o cambiar de ordenador.
+> Describir el entorno como código permite que todo el equipo use las mismas herramientas y versiones sin instalarlas una por una. Así, una persona con Mac y otra con Windows pueden abrir el proyecto y obtener un entorno equivalente, reduciendo errores de configuración y facilitando reproducirlo si hay que reinstalarlo o cambiar de ordenador
