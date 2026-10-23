@@ -1,7 +1,7 @@
 # Documentación de mi entorno de desarrollo · Práctica 2
 
-**Nombre y apellidos:**
-**URL de mi repositorio:**
+**Luis Belmonte**
+**URL de mi repositorio:https://github.com/bevil98k/Luis-Belmonte-V-lchez**
 
 > Rellena cada apartado a medida que avanzas. Donde pone «pega aquí», copia el texto
 > de la terminal (no hace falta captura). Escribe con tus palabras: no se valora la longitud,
@@ -16,11 +16,12 @@
 Resultado de `java -version` y `node -v` **antes** de instalar nada:
 
 ```
-pega aquí
+bash: java:command not found
+bash: node:command not found
 ```
 
 ¿Por qué crees que aparece ese mensaje? (relaciónalo con la diapositiva «Problemas habituales del entorno»)
-
+Que no esta instalado ni java ni node
 > 
 
 ### 1.2. Después de la 1.ª reconstrucción (paso 5)
@@ -28,24 +29,28 @@ pega aquí
 Resultado de `java -version`, `node -v` y `jupyter lab --version` **después**:
 
 ```
-pega aquí
+openjdk version "27" 2026-09-15
+OpenJDK Runtime Environment Temurin-27+35 (build 27+35)
+OpenJDK 64-Bit Server VM Temurin-27+35 (build 27+35, mixed mode, sharing)
+v24.22.1
+4.6.4
 ```
 
 ¿Qué líneas nuevas han aparecido en `devcontainer.json`? Explica con tus palabras qué hace cada una:
 
-> 
+Cambiar de 0, a 1, supongo que de esa manera esta instalado el programa
 
 ### 1.3. Comparativa de los dos IDE (paso 6)
 
 |                                         | Editor de GitHub Codespaces | JupyterLab |
 |-----------------------------------------|-----------------------------|------------|
-| ¿Libre o propietario?                   |                             |            |
-| Licencia / empresa o comunidad          |                             |            |
-| ¿Tiene coste? ¿Con qué límites?         |                             |            |
-| ¿Se puede usar fuera de GitHub?         |                             |            |
-| Lo que más me ha gustado                |                             |            |
-| Lo que menos me ha gustado              |                             |            |
-| ¿Para qué tipo de trabajo lo elegiría?  |                             |            |
+| ¿Libre o propietario?                   |Propietario                  |  Libre          |
+| Licencia / empresa o comunidad          |GitHub/Microsoft.            | BSD de claúsulas           |
+| ¿Tiene coste? ¿Con qué límites?         |La cuota es gratuita , pero si se supera se cobra por el uso| NO tiene coste de licencia, el coste depende del servidor              |
+| ¿Se puede usar fuera de GitHub?         | VS code si, pero Codespaces necesita la infraestructura |Si, puede instalarse y ejecutarse localmente            |
+| Lo que más me ha gustado                |Permite programar desde el navegador con el entorno ya preparado| Permite combinar explicaciones, código y resultados en un mismo documento |
+| Lo que menos me ha gustado              |Depende de Internet y las cuotas pueden limitar el uso| No es tan cómodo para organizar proyectos grandes con muchos archivos |
+| ¿Para qué tipo de trabajo lo elegiría?  |Para desarrollar proyectos completos desde cualquier ordenador|Para prácticas, análisis de datos, experimentos y aprendizaje paso a paso|
 
 ---
 
@@ -53,12 +58,12 @@ pega aquí
 
 | Extensión | ¿Para qué sirve? | ¿Qué cambió al instalarla? | ¿La mantengo? ¿Por qué? |
 |-----------|------------------|----------------------------|-------------------------|
-| Extension Pack for Java |   |   |   |
-| Code Spell Checker      |   |   |   |
+| Extension Pack for Java |Sirve para programar, compilar y ejecutar aplicaciones Java desde VS Code. Incluye herramientas para depurar, gestionar proyectos y trabajar con Maven|Se activó el soporte para Java, aparecieron opciones para ejecutar y depurar archivos .java, y se pudieron detectar errores en el código|Sí, porque necesito Java para trabajar con el archivo Factura.java|
+| Code Spell Checker      |Sirve para detectar errores ortográficos en los comentarios, textos y nombres escritos en el código|Empezó a señalar palabras posiblemente mal escritas y ofreció sugerencias de corrección|Sí, porque ayuda a escribir mejor los comentarios y la documentación del proyecto.|
 
 ¿Qué diferencia hay entre instalar una extensión **solo desde el panel** y añadirla **también a `devcontainer.json`**?
 
-> 
+> Instalar una extensión solo desde el panel la instala únicamente en tu entorno actual. Si añades la extensión también a devcontainer.json, queda incluida en la configuración del proyecto y se instalará automáticamente para cualquier persona que reconstruya el contenedor.
 
 ---
 
