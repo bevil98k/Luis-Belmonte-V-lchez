@@ -108,17 +108,33 @@ La parte del proyecto es la configuración de devcontainer.json, las extensiones
 Salida completa de la tarea **Build completo** (paso 15):
 
 ```
-pega aquí
+=== FACTURA generada con Java 27 ===
+Dominio web anual              12.00 EUR
+Alojamiento web                59.90 EUR
+Logotipo corporativo          150.00 EUR
+-----------------------------------------
+Base imponible                221.90 EUR
+IVA (21 %)                     46.60 EUR
+TOTAL                         268.50 EUR
+
+=== FACTURA generada con Node.js v24.22.1 ===
+Dominio web anual              12.00 EUR
+Alojamiento web                59.90 EUR
+Logotipo corporativo          150.00 EUR
+-----------------------------------------
+Base imponible                221.90 EUR
+IVA (21 %)                     46.60 EUR
+TOTAL                         268.50 EUR
 ```
 
 | Lenguaje | Archivo fuente | Herramienta que lo traduce | Archivo generado | Cómo se ejecuta |
 |----------|----------------|----------------------------|------------------|-----------------|
-| Java       | `src/java/Factura.java` |   |   |   |
-| TypeScript | `src/ts/factura.ts`     |   |   |   |
+| Java       | `src/java/Factura.java` | `javac` y `jar` | `build/java/Factura.class` y `build/factura.jar` | `java -jar build/factura.jar` |
+| TypeScript | `src/ts/factura.ts`     | `tsc` | `dist/factura.js` | `node dist/factura.js` (o `npm start`) |
 
 **Opcional:** ¿has podido ejecutar los mismos archivos desde JupyterLab (paso 19)? ¿Por qué funciona en los dos IDE sin instalar nada más?
 
-> 
+> No, porque no funciona
 
 ---
 
@@ -126,39 +142,45 @@ pega aquí
 
 | Elemento | ¿Quién lo actualiza? | Modo (automático / manual / ninguno) | Qué he configurado yo |
 |----------|----------------------|--------------------------------------|-----------------------|
-| El editor de Codespaces |   |   |   |
-| Las extensiones         |   |   |   |
-| Java                    |   |   |   |
-| Node.js                 |   |   |   |
-| Dependencias npm (lodash, typescript…) |   |   |   |
+| El editor de Codespaces | GitHub/Microsoft | Automático | No he fijado una versión; uso el editor que proporciona Codespaces. |
+| Las extensiones         | VS Code y quienes publican cada extensión | Automático para sus actualizaciones; la instalación se repite al reconstruir el contenedor | He incluido `vscjava.vscode-java-pack` en `devcontainer.json`; no he fijado su versión. |
+| Java                    | La característica Java de Dev Containers instala el JDK | Manual | He fijado Java en la versión 21 (`"version": "21"`); para cambiarla debo editar la configuración y reconstruir el contenedor. |
+| Node.js                 | La característica Node.js de Dev Containers lo instala | Automático al crear o reconstruir el contenedor | He añadido la característica `ghcr.io/devcontainers/features/node:1`, sin fijar una versión. |
+| Dependencias npm (lodash, typescript…) | Los mantenedores de los paquetes publican versiones; yo decido cuándo adoptarlas | Manual | `postCreateCommand` ejecuta `npm install`; las versiones están declaradas en `package.json` y bloqueadas en `package-lock.json`. Para actualizarlas debo cambiar las versiones y actualizar el lockfile. |
 
 Versión de Java **antes** (paso 5) y **después** (paso 18):
 
-```
-pega aquí
+``` Antes: openjdk version "27" 2026-09-15
+OpenJDK Runtime Environment Temurin-27+35 (build 27+35)
+OpenJDK 64-Bit Server VM Temurin-27+35 (build 27+35, mixed mode, sharing)
+Despues: openjdk version "21" 2023-09-19 LTS OpenJDK Runtime Environment Microsoft-8425986 (build 21+35-LTS) OpenJDK 64-Bit Server VM Microsoft-8425986 (build 21+35-LTS, mixed mode, sharing)
 ```
 
 Resultado de `npm outdated` (paso 17):
 
 ```
-pega aquí
+Package         Current    Wanted   Latest  Location                    Depended by
+@types/lodash  4.14.202  4.14.202  4.17.27  node_modules/@types/lodash  Luis-Belmonte-V-lchez
+@types/node    20.11.30  20.11.30   26.6.5  node_modules/@types/node    Luis-Belmonte-V-lchez
+typescript        5.4.5     5.4.5    7.0.2  node_modules/typescript     Luis-Belmonte-V-lchez
 ```
 
 Resultado de `npm audit` **antes** de actualizar lodash (solo el resumen final):
 
 ```
-pega aquí
+Package Current Wanted Latest Location Depended by @types/lodash 4.14.202 4.14.202 4.17.27 node_modules/@types/lodash plantilla-entorno-daw-ismael @types/node 20.11.30 20.11.30 26.6.5 node_modules/@types/node plantilla-entorno-daw-ismael lodash 4.17.20 4.17.20 4.18.1 node_modules/lodash plantilla-entorno-daw-ismael typescript 5.4.5 5.4.5 7.0.2 node_modules/typescript plantilla-entorno-daw-ismael
 ```
 
 Resultado de `npm audit` **después**:
 
 ```
-pega aquí
+found 0 vulnerabilities
 ```
 
 **Mi política de actualizaciones**: si este entorno lo usara un equipo de 5 personas durante todo el curso, ¿qué dejarías en automático y qué fijarías a mano? Justifícalo.
 
-> 
+> Dejaría automáticas las actualizaciones del editor de Codespaces y aplicaría pronto las actualizaciones de seguridad. En cambio, fijaría las versiones de Java y Node.js y mantendría bloqueadas las dependencias npm en el archivo de bloqueo para que las cinco personas trabajemos con las mismas versiones durante el curso. Revisaría las actualizaciones de herramientas y dependencias periódicamente; antes de incorporarlas, comprobaría que las compilaciones y pruebas sigan funcionando y actualizaría la configuración del proyecto para que el cambio sea igual para todo el equipo.
+
 
 ---
 
@@ -166,10 +188,10 @@ pega aquí
 
 Anota cualquier problema que hayas tenido y cómo lo resolviste (también si usaste un fragmento completo).
 
-> 
+>Al guardar entorno.md, VS Code avisó de que el archivo en disco era más reciente que el que tenía abierto. Para no perder los cambios, comparé las dos versiones y conservé la más reciente. No utilicé ningún fragmento completo.
 
 ## 7. Reflexión final
 
 ¿Qué ventaja tiene describir el entorno «como código» frente a instalar cada programa a mano en tu ordenador? Piensa en un equipo con Mac y Windows.
 
-> 
+> Describir el entorno como código permite que todo el equipo use las mismas herramientas y versiones sin instalarlas una por una. Así, una persona con Mac y otra con Windows pueden abrir el proyecto y obtener un entorno equivalente, reduciendo errores de configuración y facilitando reproducirlo si hay que reinstalarlo o cambiar de ordenador.
